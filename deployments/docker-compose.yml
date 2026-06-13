@@ -10,6 +10,15 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog
+    ports:
+      - "1025:1025" # SMTP server port
+      - "8025:8025" # Web UI port
+    logging:
+      driver: 'none' # Optional: Stops bloated logs from filling your disk
+
 volumes:
   pgdata:
     driver: local
